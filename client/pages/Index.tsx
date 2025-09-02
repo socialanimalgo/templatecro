@@ -8,8 +8,8 @@ import { Mountain, Scissors, UtensilsCrossed, Scale, Tractor, Briefcase, Newspap
 // Language translations
 const translations = {
   hr: {
-    chooseTemplate: "Odaberite predložak",
-    subtitle: "Odaberite savršen predložak za svoju web stranicu",
+    chooseTemplate: "Odaberite predložak webstranice Hrvatska",
+    subtitle: "Odaberite tip web stranice koju želite, izvršite kupovinu, nakon izvršene kupovine naši agenti postaviti će stranicu za vas, ispuniti ju sadržajom te vam poslati finalnu web adresu",
     preview: "Pregledaj",
     buyNow: "Kupi sada",
     comingSoon: "Uskoro dostupno",
@@ -35,7 +35,7 @@ const translations = {
     templates: "predlošci",
     available: "dostupno",
     discountText: "90% POPUST - Ograniceno vrijeme!",
-    footerText: "2024 webstranice Hrvatska. Odaberite svoju savršenu stranicu, izvršite kupovinu, a ostalo prepustite nama."
+    footerText: "2024 webstranice Hrvatska. Odaberite svoju savršenu stranicu, izvršite kupovinu, a ostalo prepustite nama.\n\nwebstranice Hrvatska pripada obrtu za digitalni marketing Social Animal OIB 12764208023"
   },
   en: {
     chooseTemplate: "Choose Your Template",
@@ -456,9 +456,9 @@ export default function Index() {
       {/* Footer */}
       <footer className="bg-white border-t py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
+          <div className="text-muted-foreground whitespace-pre-line">
             {t.footerText}
-          </p>
+          </div>
         </div>
       </footer>
     </div>
