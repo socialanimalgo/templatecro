@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { Mountain, Scissors, UtensilsCrossed, Scale, Tractor, Briefcase, Newspaper, Zap, Music, Eye, ShoppingCart, Star } from "lucide-react";
+import { Mountain, Scissors, UtensilsCrossed, Scale, Tractor, Briefcase, Newspaper, Zap, Music, Eye, ShoppingCart, Star, Heart, Car, Droplets, Home } from "lucide-react";
 
 // Language translations
 const translations = {
@@ -31,6 +31,14 @@ const translations = {
     electricianDescription: "Profesionalni predložak za elektricarske usluge i elektrotehnicke firme",
     musician: "Glazbenik/DJ",
     musicianDescription: "Kreativni predložak za glazbenike, DJ-jeve i glazbene izvođače",
+    dentalClinic: "Zubna ordinacija",
+    dentalClinicDescription: "Profesionalni predložak za stomatološke ordinacije i zubne klinike",
+    autoRepairShop: "Autoservis",
+    autoRepairShopDescription: "Kvalitetni predložak za autoservise i automehani\u010dare",
+    plumber: "Vodoinstalater",
+    plumberDescription: "Pouzdani predložak za vodoinstalaterne usluge i održavanje",
+    realEstate: "Nekretnine",
+    realEstateDescription: "Elegantni predložak za agencije za nekretnine i agente",
     features: "značajke",
     templates: "predlošci",
     available: "dostupno",
@@ -61,6 +69,14 @@ const translations = {
     electricianDescription: "Professional template for electrical services and electrical contractors",
     musician: "Musician/DJ",
     musicianDescription: "Creative template for musicians, DJs, and music performers",
+    dentalClinic: "Dental Clinic",
+    dentalClinicDescription: "Professional template for dental clinics and dental practices",
+    autoRepairShop: "Auto Repair Shop",
+    autoRepairShopDescription: "Quality template for auto repair shops and mechanics",
+    plumber: "Plumber",
+    plumberDescription: "Reliable template for plumbing services and maintenance",
+    realEstate: "Real Estate",
+    realEstateDescription: "Elegant template for real estate agencies and agents",
     features: "features",
     templates: "templates",
     available: "available",
@@ -91,6 +107,14 @@ const translations = {
     electricianDescription: "Plantilla profesional para servicios eléctricos y contratistas eléctricos",
     musician: "Músico/DJ",
     musicianDescription: "Plantilla creativa para músicos, DJs y artistas musicales",
+    dentalClinic: "Clínica Dental",
+    dentalClinicDescription: "Plantilla profesional para clínicas dentales y consultorios odontológicos",
+    autoRepairShop: "Taller Mecánico",
+    autoRepairShopDescription: "Plantilla de calidad para talleres mecánicos y servicios automotrices",
+    plumber: "Fontanero",
+    plumberDescription: "Plantilla confiable para servicios de fontanería y mantenimiento",
+    realEstate: "Inmobiliaria",
+    realEstateDescription: "Plantilla elegante para agencias inmobiliarias y agentes",
     features: "características",
     templates: "plantillas",
     available: "disponible",
@@ -266,6 +290,78 @@ export default function Index() {
       ],
       price: "€49.99",
       originalPrice: "€499.99"
+    },
+    {
+      id: 'dental-clinic',
+      title: t.dentalClinic,
+      description: t.dentalClinicDescription,
+      icon: Heart,
+      image: "https://images.pexels.com/photos/287237/pexels-photo-287237.jpeg",
+      route: "/dental-clinic-site",
+      available: true,
+      features: [
+        "Service showcase",
+        "Doctor profiles",
+        "Appointment booking",
+        "Working hours display",
+        "Patient testimonials"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'auto-repair-shop',
+      title: t.autoRepairShop,
+      description: t.autoRepairShopDescription,
+      icon: Car,
+      image: "https://images.pexels.com/photos/3593922/pexels-photo-3593922.jpeg",
+      route: "/auto-repair-shop-site",
+      available: true,
+      features: [
+        "Service catalog",
+        "Mechanic profiles",
+        "Service booking",
+        "Parts showcase",
+        "Customer reviews"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'plumber',
+      title: t.plumber,
+      description: t.plumberDescription,
+      icon: Droplets,
+      image: "https://images.pexels.com/photos/8609034/pexels-photo-8609034.jpeg",
+      route: "/plumber-site",
+      available: true,
+      features: [
+        "Emergency service",
+        "24/7 availability",
+        "Service request form",
+        "Team showcase",
+        "Work gallery"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'real-estate',
+      title: t.realEstate,
+      description: t.realEstateDescription,
+      icon: Home,
+      image: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg",
+      route: "/real-estate-site",
+      available: true,
+      features: [
+        "Property listings",
+        "Agent profiles",
+        "Property search",
+        "Virtual tours",
+        "Market analysis"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
     }
   ];
 
@@ -336,15 +432,15 @@ export default function Index() {
           {/* Stats */}
           <div className="flex justify-center gap-8 mb-16">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">9</div>
+              <div className="text-3xl font-bold text-blue-600">13</div>
               <div className="text-gray-600 capitalize">{t.templates}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">9</div>
+              <div className="text-3xl font-bold text-green-600">13</div>
               <div className="text-gray-600 capitalize">{t.available}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">40+</div>
+              <div className="text-3xl font-bold text-purple-600">60+</div>
               <div className="text-gray-600 capitalize">{t.features}</div>
             </div>
           </div>

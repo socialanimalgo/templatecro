@@ -16,6 +16,10 @@ import EmploymentAgencySite from "./pages/EmploymentAgencySite";
 import NewsPortalSite from "./pages/NewsPortalSite";
 import ElectricianSite from "./pages/ElectricianSite";
 import MusicianSite from "./pages/MusicianSite";
+import DentalClinicSite from "./pages/DentalClinicSite";
+import AutoRepairShopSite from "./pages/AutoRepairShopSite";
+import PlumberSite from "./pages/PlumberSite";
+import RealEstateSite from "./pages/RealEstateSite";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +41,10 @@ const App = () => (
           <Route path="/news-portal-site" element={<NewsPortalSite />} />
           <Route path="/electrician-site" element={<ElectricianSite />} />
           <Route path="/musician-site" element={<MusicianSite />} />
+          <Route path="/dental-clinic-site" element={<DentalClinicSite />} />
+          <Route path="/auto-repair-shop-site" element={<AutoRepairShopSite />} />
+          <Route path="/plumber-site" element={<PlumberSite />} />
+          <Route path="/real-estate-site" element={<RealEstateSite />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
