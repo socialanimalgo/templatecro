@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(pnpm install:*)",
+      "Bash(lsof:*)",
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "Bash(kill:*)"
+    ],
+    "deny": []
+  }
+}
