@@ -327,7 +327,7 @@ export default function LawyersSite() {
     ]
   });
 
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const [showImageUpload, setShowImageUpload] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
@@ -401,7 +401,7 @@ export default function LawyersSite() {
   };
 
   const handlePurchase = () => {
-    const checkoutUrl = ""; // Will be provided later
+    const checkoutUrl = "https://buy.stripe.com/cNi4gAcVP6YychQ8NBdjO0k";
     
     // Save current website state before redirecting to Stripe
     const websiteDataToSave = {
@@ -470,6 +470,19 @@ export default function LawyersSite() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Edit/Preview Toggle - Top Priority */}
+      <div className="fixed top-4 left-4 z-50">
+        <Button
+          onClick={() => setIsEditing(!isEditing)}
+          variant={isEditing ? "default" : "outline"}
+          size="sm"
+          className="bg-white hover:bg-gray-50 shadow-xl border-2"
+        >
+          <Edit2 className="w-4 h-4 mr-2" />
+          {isEditing ? t.previewMode : t.editMode}
+        </Button>
+      </div>
+
       {/* Language and Controls */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
         {/* Back Button */}
@@ -603,16 +616,6 @@ export default function LawyersSite() {
           </DialogContent>
         </Dialog>
 
-        {/* Edit/Preview Toggle */}
-        <Button
-          onClick={() => setIsEditing(!isEditing)}
-          variant={isEditing ? "default" : "outline"}
-          size="sm"
-          className="shadow-lg"
-        >
-          <Edit2 className="w-4 h-4 mr-2" />
-          {isEditing ? t.previewMode : t.editMode}
-        </Button>
       </div>
 
       {/* Hero Section */}

@@ -5,7 +5,8 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Index from "./pages/Index";
 import VacationHouse from "./pages/VacationHouse";
 import HairstylistSite from "./pages/HairstylistSite";
@@ -24,12 +25,37 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Component to scroll to top on route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Always scroll to top immediately when route changes
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
+    // For desktop/laptop users, add smooth scroll after content loads
+    const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+    
+    if (isDesktop) {
+      const timeout = setTimeout(() => {
+        // Ensure we're at the very top for desktop users
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }, 150);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [pathname]);
+
+  return null;
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/vacation-house" element={<VacationHouse />} />

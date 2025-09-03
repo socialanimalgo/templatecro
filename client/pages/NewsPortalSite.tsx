@@ -660,13 +660,49 @@ export default function NewsPortalSite() {
   };
 
   const handlePurchase = () => {
-    console.log('Purchase data:', purchaseData);
-    alert('Hvala na kupnji! Kontaktirati ćemo vas uskoro.');
+    const checkoutUrl = "https://buy.stripe.com/7sY28s7BvbeOepY7JxdjO0n";
+
+    // Save current website state before redirecting to Stripe
+    const websiteDataToSave = {
+      newsData: newsData,
+      purchaseData: purchaseData,
+      currentLanguage: currentLang,
+      timestamp: Date.now(),
+      expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 hours from now
+    };
+
+    try {
+      localStorage.setItem('savedNewsData', JSON.stringify(websiteDataToSave));
+      console.log('News website data saved successfully for 24 hours');
+      alert('Website content saved! You can now proceed to payment.');
+    } catch (error) {
+      console.error('Failed to save news website data:', error);
+      alert('Warning: Could not save website data. Please try again.');
+    }
+
+    if (checkoutUrl) {
+      window.open(checkoutUrl, '_blank');
+    } else {
+      alert('Checkout link will be available soon!');
+    }
+
     setShowPurchaseModal(false);
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
+      {/* Edit/Preview Toggle - Top Priority */}
+      <div className="fixed top-4 left-4 z-50">
+        <Button
+          onClick={() => setIsEditing(!isEditing)}
+          variant={isEditing ? "default" : "outline"}
+          size="sm"
+          className="bg-white hover:bg-gray-50 shadow-xl border-2"
+        >
+          <Edit2 className="w-4 h-4 mr-2" />
+          {isEditing ? t.previewMode : t.editMode}
+        </Button>
+      </div>
       {/* Fixed Controls */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
         {/* Back Button */}
@@ -711,15 +747,6 @@ export default function NewsPortalSite() {
           </Button>
         </div>
 
-        {/* Edit/Preview Toggle */}
-        <Button
-          onClick={() => setIsEditing(!isEditing)}
-          variant={isEditing ? "destructive" : "default"}
-          size="sm"
-        >
-          <Edit2 className="w-4 h-4 mr-2" />
-          {isEditing ? t.previewMode : t.editMode}
-        </Button>
 
         {/* Buy Website Button */}
         <Dialog open={showPurchaseModal} onOpenChange={setShowPurchaseModal}>

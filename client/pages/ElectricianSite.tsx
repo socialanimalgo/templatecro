@@ -390,7 +390,7 @@ export default function ElectricianSite() {
   };
 
   const handlePurchase = () => {
-    const checkoutUrl = "https://buy.stripe.com/4gM00kg8182Cfu2gg3djO03";
+    const checkoutUrl = "https://buy.stripe.com/8x214oaNHgz8dlUe7VdjO0o";
 
     // Save current website state before redirecting to Stripe
     const websiteDataToSave = {

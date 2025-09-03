@@ -307,8 +307,20 @@ export default function MusicianSite() {
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed'
     }}>
+      {/* Edit/Preview Toggle - Top Priority */}
+      <div className="fixed top-4 left-4 z-50">
+        <Button
+          onClick={() => setEditMode(!editMode)}
+          variant={editMode ? "default" : "outline"}
+          size="sm"
+          className="bg-white hover:bg-gray-50 shadow-xl border-2"
+        >
+          <Edit2 className="w-4 h-4 mr-2" />
+          {editMode ? t.previewMode : t.editMode}
+        </Button>
+      </div>
       {/* Top Controls */}
-      <div className="fixed top-4 left-4 right-4 z-50 flex justify-between items-center">
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
         <Button
           variant="outline"
           className="bg-white/90 backdrop-blur-sm"
@@ -318,120 +330,109 @@ export default function MusicianSite() {
           {t.backToTemplates}
         </Button>
 
-        <div className="flex gap-2">
-          {/* Language Controls */}
-          <div className="flex bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-1">
-            <Button
-              onClick={() => setCurrentLang('hr')}
-              variant={currentLang === 'hr' ? "default" : "ghost"}
-              size="sm"
-              className="text-lg px-2"
-            >
-              🇭🇷
-            </Button>
-            <Button
-              onClick={() => setCurrentLang('en')}
-              variant={currentLang === 'en' ? "default" : "ghost"}
-              size="sm"
-              className="text-lg px-2"
-            >
-              🇬🇧
-            </Button>
-            <Button
-              onClick={() => setCurrentLang('es')}
-              variant={currentLang === 'es' ? "default" : "ghost"}
-              size="sm"
-              className="text-lg px-2"
-            >
-              🇪🇸
-            </Button>
-          </div>
-
+        {/* Language Controls */}
+        <div className="flex bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-1">
           <Button
-            variant="outline"
-            className="bg-white/90 backdrop-blur-sm"
-            onClick={() => setEditMode(!editMode)}
+            onClick={() => setCurrentLang('hr')}
+            variant={currentLang === 'hr' ? "default" : "ghost"}
+            size="sm"
+            className="text-lg px-2"
           >
-            <Edit2 className="w-4 h-4 mr-2" />
-            {editMode ? t.previewMode : t.editMode}
+            🇭🇷
           </Button>
-
-          <Dialog open={backgroundDialog} onOpenChange={setBackgroundDialog}>
-            <DialogTrigger asChild>
-              <Button variant="outline" className="bg-white/90 backdrop-blur-sm">
-                <Camera className="w-4 h-4 mr-2" />
-                {t.changeBackground}
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>{t.changeBackground}</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4">
-                <div>
-                  <Label>{t.pasteImageUrl}</Label>
-                  <div className="flex gap-2">
-                    <Input
-                      value={imageUrl}
-                      onChange={(e) => setImageUrl(e.target.value)}
-                      placeholder="https://example.com/image.jpg"
-                    />
-                    <Button onClick={() => {
-                      if (imageUrl) {
-                        setBackgroundDialog(false);
-                        setImageUrl("");
-                      }
-                    }}>
-                      {t.useUrl}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
-
-          <Dialog open={purchaseDialog} onOpenChange={setPurchaseDialog}>
-            <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white" data-testid="purchase-button">
-                <ShoppingCart className="w-4 h-4 mr-2" />
-                {t.buyWebsite} <span className="text-xs ml-1">{t.discountBadge}</span>
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>{t.buyWebsiteTitle}</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4">
-                <p className="text-muted-foreground">
-                  {t.purchaseDetails}
-                </p>
-                <div className="space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <Label htmlFor="firstName">{t.firstName}</Label>
-                      <Input id="firstName" placeholder={t.firstName} />
-                    </div>
-                    <div>
-                      <Label htmlFor="lastName">{t.lastName}</Label>
-                      <Input id="lastName" placeholder={t.lastName} />
-                    </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="email">{t.emailAddress}</Label>
-                    <Input id="email" type="email" placeholder={t.emailAddress} />
-                  </div>
-                  <div>
-                    <Label htmlFor="company">{t.companyOptional}</Label>
-                    <Input id="company" placeholder={t.companyOptional} />
-                  </div>
-                </div>
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                  {t.purchase} €49.99
-                </Button>
-              </div>
-            </DialogContent>
-          </Dialog>
+          <Button
+            onClick={() => setCurrentLang('en')}
+            variant={currentLang === 'en' ? "default" : "ghost"}
+            size="sm"
+            className="text-lg px-2"
+          >
+            🇬🇧
+          </Button>
+          <Button
+            onClick={() => setCurrentLang('es')}
+            variant={currentLang === 'es' ? "default" : "ghost"}
+            size="sm"
+            className="text-lg px-2"
+          >
+            🇪🇸
+          </Button>
         </div>
+
+        <Dialog open={backgroundDialog} onOpenChange={setBackgroundDialog}>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="bg-white/90 backdrop-blur-sm">
+              <Camera className="w-4 h-4 mr-2" />
+              {t.changeBackground}
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{t.changeBackground}</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div>
+                <Label>{t.pasteImageUrl}</Label>
+                <div className="flex gap-2">
+                  <Input
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
+                    placeholder="https://example.com/image.jpg"
+                  />
+                  <Button onClick={() => {
+                    if (imageUrl) {
+                      setBackgroundDialog(false);
+                      setImageUrl("");
+                    }
+                  }}>
+                    {t.useUrl}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={purchaseDialog} onOpenChange={setPurchaseDialog}>
+          <DialogTrigger asChild>
+            <Button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white" data-testid="purchase-button">
+              <ShoppingCart className="w-4 h-4 mr-2" />
+              {t.buyWebsite} <span className="text-xs ml-1">{t.discountBadge}</span>
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{t.buyWebsiteTitle}</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <p className="text-muted-foreground">
+                {t.purchaseDetails}
+              </p>
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <Label htmlFor="firstName">{t.firstName}</Label>
+                    <Input id="firstName" placeholder={t.firstName} />
+                  </div>
+                  <div>
+                    <Label htmlFor="lastName">{t.lastName}</Label>
+                    <Input id="lastName" placeholder={t.lastName} />
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="email">{t.emailAddress}</Label>
+                  <Input id="email" type="email" placeholder={t.emailAddress} />
+                </div>
+                <div>
+                  <Label htmlFor="company">{t.companyOptional}</Label>
+                  <Input id="company" placeholder={t.companyOptional} />
+                </div>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                {t.purchase} €49.99
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Hero Section */}

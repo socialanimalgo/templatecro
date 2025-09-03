@@ -330,7 +330,7 @@ export default function VacationHouse() {
     ]
   });
 
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const [showImageUpload, setShowImageUpload] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
@@ -404,7 +404,7 @@ export default function VacationHouse() {
   };
 
   const handlePurchase = () => {
-    const checkoutUrl = "https://buy.stripe.com/eVq3cwaNHaaKepY8NBdjO01";
+    const checkoutUrl = "https://buy.stripe.com/dRm9AU8Fz96GchQaVJdjO0i";
 
     // Save current website state before redirecting to Stripe
     const websiteDataToSave = {
@@ -506,6 +506,19 @@ export default function VacationHouse() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Edit/Preview Toggle - Top Priority */}
+      <div className="fixed top-4 left-4 z-50">
+        <Button
+          onClick={() => setIsEditing(!isEditing)}
+          variant={isEditing ? "default" : "outline"}
+          size="sm"
+          className="bg-white hover:bg-gray-50 shadow-xl border-2"
+        >
+          <Edit2 className="w-4 h-4 mr-2" />
+          {isEditing ? t.previewMode : t.editMode}
+        </Button>
+      </div>
+
       {/* Language and Controls */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
         {/* Back Button */}
@@ -639,16 +652,6 @@ export default function VacationHouse() {
           </DialogContent>
         </Dialog>
 
-        {/* Edit/Preview Toggle */}
-        <Button
-          onClick={() => setIsEditing(!isEditing)}
-          variant={isEditing ? "default" : "outline"}
-          size="sm"
-          className="shadow-lg"
-        >
-          <Edit2 className="w-4 h-4 mr-2" />
-          {isEditing ? t.previewMode : t.editMode}
-        </Button>
       </div>
 
       {/* Hero Section */}

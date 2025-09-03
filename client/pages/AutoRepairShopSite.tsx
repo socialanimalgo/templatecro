@@ -264,6 +264,18 @@ export default function AutoRepairShopSite() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Edit/Preview Toggle - Top Priority */}
+      <div className="fixed top-4 left-4 z-50">
+        <Button
+          onClick={() => setIsEditing(!isEditing)}
+          variant={isEditing ? "default" : "outline"}
+          size="sm"
+          className="bg-white hover:bg-gray-50 shadow-xl border-2"
+        >
+          <Edit2 className="w-4 h-4 mr-2" />
+          {isEditing ? t.previewMode : t.editMode}
+        </Button>
+      </div>
       {/* Fixed Controls */}
       <div className="fixed top-4 right-4 z-50 flex gap-2">
         {/* Language Toggle */}
@@ -286,16 +298,6 @@ export default function AutoRepairShopSite() {
           </Button>
         </div>
 
-        {/* Edit/Preview Toggle */}
-        <Button
-          onClick={() => setIsEditing(!isEditing)}
-          variant={isEditing ? "default" : "outline"}
-          size="sm"
-          className="bg-white shadow-lg"
-        >
-          <Edit2 className="w-4 h-4 mr-2" />
-          {isEditing ? t.previewMode : t.editMode}
-        </Button>
 
         {/* Back Button */}
         <Button
