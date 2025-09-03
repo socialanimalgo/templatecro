@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { Mountain, Scissors, UtensilsCrossed, Scale, Tractor, Briefcase, Newspaper, Zap, Music, Eye, ShoppingCart, Star, Heart, Car, Droplets, Home, TrendingUp, Clock, Users2, CheckCircle, Flame, Timer } from "lucide-react";
+import { Mountain, Scissors, UtensilsCrossed, Scale, Tractor, Briefcase, Newspaper, Zap, Music, Eye, ShoppingCart, Star, Heart, Car, Droplets, Home, Dumbbell, Sparkles, Stethoscope, Calculator, TrendingUp, Clock, Users2, CheckCircle, Flame, Timer } from "lucide-react";
 
 // Language translations
 const translations = {
@@ -39,6 +39,14 @@ const translations = {
     plumberDescription: "Pouzdani predložak za vodoinstalaterne usluge i održavanje",
     realEstate: "Nekretnine",
     realEstateDescription: "Elegantni predložak za agencije za nekretnine i agente",
+    fitnessGym: "Fitness Centar",
+    fitnessGymDescription: "Motivacijski predložak za teretane i fitness centre",
+    beautySalon: "Salon ljepote",
+    beautySalonDescription: "Luksuzni predložak za salone ljepote i spa centre",
+    medicalPractice: "Medicinska ordinacija",
+    medicalPracticeDescription: "Profesionalni predložak za liječnike i ordinacije",
+    accountingFirm: "Računovodstvo",
+    accountingFirmDescription: "Pouzdani predložak za računovodstvene usluge",
     features: "značajke",
     templates: "predlošci",
     available: "dostupno",
@@ -91,6 +99,14 @@ const translations = {
     plumberDescription: "Reliable template for plumbing services and maintenance",
     realEstate: "Real Estate",
     realEstateDescription: "Elegant template for real estate agencies and agents",
+    fitnessGym: "Fitness Gym",
+    fitnessGymDescription: "Motivational template for gyms and fitness centers",
+    beautySalon: "Beauty Salon",
+    beautySalonDescription: "Luxurious template for beauty salons and spas",
+    medicalPractice: "Medical Practice",
+    medicalPracticeDescription: "Professional template for doctors and clinics",
+    accountingFirm: "Accounting Firm",
+    accountingFirmDescription: "Reliable template for accounting services",
     features: "features",
     templates: "templates",
     available: "available",
@@ -143,6 +159,14 @@ const translations = {
     plumberDescription: "Plantilla confiable para servicios de fontanería y mantenimiento",
     realEstate: "Inmobiliaria",
     realEstateDescription: "Plantilla elegante para agencias inmobiliarias y agentes",
+    fitnessGym: "Gimnasio",
+    fitnessGymDescription: "Plantilla motivacional para gimnasios y centros de fitness",
+    beautySalon: "Salón de Belleza",
+    beautySalonDescription: "Plantilla lujosa para salones de belleza y spas",
+    medicalPractice: "Práctica Médica",
+    medicalPracticeDescription: "Plantilla profesional para médicos y clínicas",
+    accountingFirm: "Firma Contable",
+    accountingFirmDescription: "Plantilla confiable para servicios contables",
     features: "características",
     templates: "plantillas",
     available: "disponible",
@@ -580,6 +604,126 @@ export default function Index() {
         "Property search",
         "Virtual tours",
         "Market analysis"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'fitness-gym',
+      title: t.fitnessGym,
+      description: t.fitnessGymDescription,
+      icon: Dumbbell,
+      image: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg",
+      route: "/fitness-gym",
+      available: true,
+      features: currentLang === 'hr' ? [
+        "Članarine i paketi",
+        "Raspored treninga",
+        "Profili trenera",
+        "Galerija objekta",
+        "Online rezervacije"
+      ] : currentLang === 'en' ? [
+        "Membership plans",
+        "Class schedule",
+        "Trainer profiles",
+        "Facility gallery",
+        "Online booking"
+      ] : [
+        "Planes de membresía",
+        "Horario de clases",
+        "Perfiles de entrenadores",
+        "Galería de instalaciones",
+        "Reserva en línea"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'beauty-salon',
+      title: t.beautySalon,
+      description: t.beautySalonDescription,
+      icon: Sparkles,
+      image: "https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg",
+      route: "/beauty-salon",
+      available: true,
+      features: currentLang === 'hr' ? [
+        "Katalog usluga",
+        "Spa paketi",
+        "Tim stilista",
+        "Galerija transformacija",
+        "Rezervacija termina"
+      ] : currentLang === 'en' ? [
+        "Service catalog",
+        "Spa packages",
+        "Stylist team",
+        "Transformation gallery",
+        "Appointment booking"
+      ] : [
+        "Catálogo de servicios",
+        "Paquetes de spa",
+        "Equipo de estilistas",
+        "Galería de transformaciones",
+        "Reserva de citas"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'medical-practice',
+      title: t.medicalPractice,
+      description: t.medicalPracticeDescription,
+      icon: Stethoscope,
+      image: "https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg",
+      route: "/medical-practice",
+      available: true,
+      features: currentLang === 'hr' ? [
+        "Medicinske usluge",
+        "Profili doktora",
+        "Radno vrijeme",
+        "Osiguranja",
+        "Zdravstveni savjeti"
+      ] : currentLang === 'en' ? [
+        "Medical services",
+        "Doctor profiles",
+        "Office hours",
+        "Insurance accepted",
+        "Health tips"
+      ] : [
+        "Servicios médicos",
+        "Perfiles de doctores",
+        "Horario de consulta",
+        "Seguros aceptados",
+        "Consejos de salud"
+      ],
+      price: "€49.99",
+      originalPrice: "€499.99"
+    },
+    {
+      id: 'accounting-firm',
+      title: t.accountingFirm,
+      description: t.accountingFirmDescription,
+      icon: Calculator,
+      image: "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg",
+      route: "/accounting-firm",
+      available: true,
+      features: currentLang === 'hr' ? [
+        "Računovodstvene usluge",
+        "Porezno planiranje",
+        "Poslovni paketi",
+        "Tim stručnjaka",
+        "Klijentski portal"
+      ] : currentLang === 'en' ? [
+        "Accounting services",
+        "Tax planning",
+        "Business packages",
+        "Expert team",
+        "Client portal"
+      ] : [
+        "Servicios contables",
+        "Planificación fiscal",
+        "Paquetes empresariales",
+        "Equipo experto",
+        "Portal del cliente"
       ],
       price: "€49.99",
       originalPrice: "€499.99"

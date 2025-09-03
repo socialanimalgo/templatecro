@@ -21,6 +21,10 @@ import DentalClinicSite from "./pages/DentalClinicSite";
 import AutoRepairShopSite from "./pages/AutoRepairShopSite";
 import PlumberSite from "./pages/PlumberSite";
 import RealEstateSite from "./pages/RealEstateSite";
+import FitnessGym from "./pages/FitnessGym";
+import BeautySalon from "./pages/BeautySalon";
+import MedicalPractice from "./pages/MedicalPractice";
+import AccountingFirm from "./pages/AccountingFirm";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -71,6 +75,10 @@ const App = () => (
           <Route path="/auto-repair-shop-site" element={<AutoRepairShopSite />} />
           <Route path="/plumber-site" element={<PlumberSite />} />
           <Route path="/real-estate-site" element={<RealEstateSite />} />
+          <Route path="/fitness-gym" element={<FitnessGym />} />
+          <Route path="/beauty-salon" element={<BeautySalon />} />
+          <Route path="/medical-practice" element={<MedicalPractice />} />
+          <Route path="/accounting-firm" element={<AccountingFirm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

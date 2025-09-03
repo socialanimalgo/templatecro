@@ -15,7 +15,11 @@ export const PAYMENT_LINKS = {
   DENTAL_CLINIC: "https://buy.stripe.com/bJeaEYcVP2Ii2Hg6FtdjO0q",
   AUTO_REPAIR: "https://buy.stripe.com/6oU5kEbRL96G6XwaVJdjO0r",
   PLUMBER: "https://buy.stripe.com/14A4gAf3XdmW6Xwd3RdjO0s",
-  REAL_ESTATE: "https://buy.stripe.com/28E9AU093beOepY6FtdjO0t"
+  REAL_ESTATE: "https://buy.stripe.com/28E9AU093beOepY6FtdjO0t",
+  FITNESS_GYM: "https://buy.stripe.com/test_00w4gA5tn2IiepYd3RdjO05",
+  BEAUTY_SALON: "https://buy.stripe.com/test_6oU9AUcVPer03Lkd3RdjO06",
+  MEDICAL_PRACTICE: "https://buy.stripe.com/test_00wdRa6xr82CchQaVJdjO07",
+  ACCOUNTING_FIRM: "https://buy.stripe.com/test_5kQ14oaNHgz8fu2d3RdjO08"
 } as const;
 
 // Product details for reference
